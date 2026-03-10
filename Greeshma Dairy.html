@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Greeshma Dairy</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background-image:url("ghee.jpg");
+background-size:cover;
+background-position:center;
+height:100vh;
+}
+
+/* Overlay */
+
+.overlay{
+background:rgba(0,0,0,0.35);
+height:100%;
+width:100%;
+position:relative;
+}
+
+/* Title */
+
+.title{
+text-align:center;
+color:white;
+padding-top:80px;
+}
+
+.title h1{
+margin:0;
+font-size:60px;
+font-weight:bold;
+}
+
+.tagline{
+margin-top:15px;
+font-size:24px;
+}
+
+/* Order Box */
+
+.order-box{
+
+position:absolute;
+top:50%;
+left:6%;
+
+width:380px;
+
+padding:35px;
+
+border-radius:18px;
+
+background:rgba(255,255,255,0.75);
+backdrop-filter:blur(10px);
+
+box-shadow:0 12px 30px rgba(0,0,0,0.35);
+
+transform:translateY(-50%);
+}
+
+/* Heading */
+
+.order-box h2{
+margin-bottom:10px;
+}
+
+/* Inputs */
+
+select,input,textarea{
+
+width:100%;
+padding:12px;
+margin:8px 0;
+
+border-radius:8px;
+border:1px solid #ccc;
+font-size:15px;
+}
+
+/* Button */
+
+button{
+
+width:100%;
+padding:14px;
+
+background:#25D366;
+border:none;
+color:white;
+
+font-size:18px;
+border-radius:8px;
+cursor:pointer;
+
+}
+
+button:hover{
+background:#1ebe5d;
+}
+
+/* Contact */
+
+.contact{
+
+position:absolute;
+bottom:25px;
+right:25px;
+
+background:white;
+padding:14px 20px;
+
+border-radius:12px;
+
+box-shadow:0 6px 18px rgba(0,0,0,0.3);
+font-size:15px;
+
+}
+
+.contact strong{
+color:#f7941d;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="overlay">
+
+<div class="title">
+
+<h1>Greeshma Dairy</h1>
+
+<div class="tagline">
+Fresh | Natural | Homemade
+</div>
+
+</div>
+
+<div class="order-box">
+
+<h2>Order Fresh Homemade Ghee</h2>
+
+<input type="text" id="name" placeholder="Customer Name">
+
+<input type="tel" id="phone" placeholder="Phone Number">
+
+<textarea id="address" placeholder="Delivery Address"></textarea>
+
+<select id="product">
+<option value="250g" data-price="225">250g - ₹225</option>
+<option value="500g" data-price="450">500g - ₹450</option>
+<option value="1kg" data-price="900">1kg - ₹900</option>
+</select>
+
+<input type="number" id="quantity" placeholder="Enter Quantity" min="1">
+
+<button onclick="order()">Order on WhatsApp</button>
+
+</div>
+
+<div class="contact">
+
+<strong>Swathi</strong><br>
+📞 917032540046
+
+</div>
+
+</div>
+
+<script>
+
+function order(){
+
+var name=document.getElementById("name").value;
+var phone=document.getElementById("phone").value;
+var address=document.getElementById("address").value;
+
+var product=document.getElementById("product");
+var productName=product.value;
+var price=product.options[product.selectedIndex].getAttribute("data-price");
+
+var quantity=document.getElementById("quantity").value;
+
+if(name=="" || phone=="" || address=="" || quantity==""){
+alert("Please fill all details");
+return;
+}
+
+var total=price*quantity;
+
+var message=
+"Hello, I want to order Ghee.%0A%0A"+
+"Name: "+name+
+"%0APhone: "+phone+
+"%0AAddress: "+address+
+"%0A%0AProduct: "+productName+
+"%0AQuantity: "+quantity+
+"%0ATotal Price: ₹"+total;
+
+var owner="917032540046";
+
+var url="https://wa.me/"+owner+"?text="+message;
+
+window.open(url,'_blank');
+
+}
+
+</script>
+
+</body>
+
+</html>
