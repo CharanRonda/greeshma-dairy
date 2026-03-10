@@ -48,14 +48,22 @@ padding:20px;
 .products{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
+gap:25px;
 }
 
+/* Product Card */
+
 .card{
+
 background:white;
-border-radius:10px;
-padding:15px;
-box-shadow:0 4px 10px rgba(0,0,0,0.3);
+border-radius:12px;
+padding:20px;
+box-shadow:0 6px 15px rgba(0,0,0,0.3);
+
+display:flex;
+flex-direction:column;
+align-items:center;
+
 }
 
 .card img{
@@ -63,17 +71,39 @@ width:100%;
 border-radius:8px;
 }
 
+.card h3{
+margin:12px 0 5px 0;
+text-align:center;
+}
+
 .price{
 font-weight:bold;
 font-size:20px;
-margin:10px 0;
+margin-bottom:12px;
 }
 
-input{
+/* Quantity Selector */
+
+.quantity-box{
+width:100%;
+text-align:center;
+}
+
+.quantity-box label{
+font-size:14px;
+color:#555;
+}
+
+select{
 width:100%;
 padding:10px;
 margin-top:5px;
+border-radius:6px;
+border:1px solid #ccc;
+font-size:16px;
 }
+
+/* Checkout button */
 
 .checkout{
 text-align:center;
@@ -88,6 +118,10 @@ border:none;
 border-radius:8px;
 font-size:18px;
 cursor:pointer;
+}
+
+button:hover{
+background:#e64a19;
 }
 
 </style>
@@ -109,25 +143,76 @@ cursor:pointer;
 
 <div class="products">
 
+<!-- Product 1 -->
+
 <div class="card">
+
 <img src="ghee250.jpg">
+
 <h3>Homemade Ghee 250g</h3>
+
 <div class="price">₹225</div>
-<input type="number" id="q1" min="0" placeholder="Quantity">
+
+<div class="quantity-box">
+<label>Select Quantity</label>
+<select id="q1">
+<option value="0">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+</select>
 </div>
 
+</div>
+
+<!-- Product 2 -->
+
 <div class="card">
+
 <img src="ghee500.jpg">
+
 <h3>Homemade Ghee 500g</h3>
+
 <div class="price">₹450</div>
-<input type="number" id="q2" min="0" placeholder="Quantity">
+
+<div class="quantity-box">
+<label>Select Quantity</label>
+<select id="q2">
+<option value="0">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+</select>
 </div>
 
+</div>
+
+<!-- Product 3 -->
+
 <div class="card">
+
 <img src="ghee1kg.jpg">
+
 <h3>Homemade Ghee 1kg</h3>
+
 <div class="price">₹900</div>
-<input type="number" id="q3" min="0" placeholder="Quantity">
+
+<div class="quantity-box">
+<label>Select Quantity</label>
+<select id="q3">
+<option value="0">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+</select>
+</div>
+
 </div>
 
 </div>
@@ -144,9 +229,9 @@ cursor:pointer;
 
 function checkout(){
 
-let q1=document.getElementById("q1").value || 0
-let q2=document.getElementById("q2").value || 0
-let q3=document.getElementById("q3").value || 0
+let q1=document.getElementById("q1").value
+let q2=document.getElementById("q2").value
+let q3=document.getElementById("q3").value
 
 if(q1==0 && q2==0 && q3==0){
 
